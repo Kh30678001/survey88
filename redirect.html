@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+  <title>跳轉問卷...</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script>
+    // 從網址參數取得 uid
+    function getQueryParam(name) {
+      const params = new URLSearchParams(window.location.search);
+      return params.get(name);
+    }
+
+    window.onload = function () {
+      const uid = getQueryParam("uid");
+      if (uid) {
+        const surveyURL = "https://surveycake.com/s/Vwkkn?uid=" + encodeURIComponent(uid);
+        window.location.href = surveyURL;
+      } else {
+        document.body.innerHTML = "<h2 style='text-align:center; color:red;'>無法辨識您的 UID，請經由 LINE 正確開啟</h2>";
+      }
+    };
+  </script>
+</head>
+<body>
+  <h2 style="text-align:center;">📋 正在為您跳轉問卷，請等待...</h2>
+</body>
+</html>
